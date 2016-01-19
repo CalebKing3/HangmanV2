@@ -4,7 +4,7 @@
 public class Hangman {
     public static void main(String[]args) {
 
-        Game game = new Game("Caleb");
+        Game game = new Game("caleb");
         Prompter prompter = new Prompter(game);
         prompter.displayProgress();
         prompter.play();
