@@ -5,8 +5,7 @@ package me.CalebKing;
  */
 public class Hangman {
     public static void main(String[] args) {
-        // Enter amazing code here:
-        if(args.length == 0){
+        if(args.length == 0) {
             System.out.println("Please enter a word");
             System.exit(0);
         }

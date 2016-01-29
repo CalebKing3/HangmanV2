@@ -16,7 +16,7 @@ public class Game {
     }
 
     private char validateGuess(char letter) {
-        if (! Character.isLetter(letter)) {
+        if (!Character.isLetter(letter)) {
             throw new IllegalArgumentException("A letter is required");
         }
         letter = Character.toLowerCase(letter);
@@ -46,7 +46,7 @@ public class Game {
 
     public String getCurrentProgress() {
         String progress = "";
-        for (char letter: mAnswer.toCharArray()) {
+        for (char letter : mAnswer.toCharArray()) {
             char display = '-';
             if (mHits.indexOf(letter) >= 0) {
                 display = letter;
@@ -59,12 +59,12 @@ public class Game {
     public int getRemainingTries() {
         return MAX_MISSES - mMisses.length();
     }
-    public String getAnswer(){
+
+    public String getAnswer() {
         return mAnswer;
     }
 
     public boolean isSolved() {
         return getCurrentProgress().indexOf('-') == -1;
     }
-
 }
