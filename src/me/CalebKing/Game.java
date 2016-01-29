@@ -1,3 +1,5 @@
+package me.CalebKing;
+
 /**
  * Created by caleb.king on 1/19/16.
  */
@@ -7,48 +9,46 @@ public class Game {
     private String mHits;
     private String mMisses;
 
-
-    public Game (String answer) {
+    public Game(String answer) {
         mAnswer = answer;
         mHits = "";
         mMisses = "";
     }
 
-    private char validateGuess(char letter){
-        if(!Character.isLetter(letter)){
+    private char validateGuess(char letter) {
+        if (! Character.isLetter(letter)) {
             throw new IllegalArgumentException("A letter is required");
         }
         letter = Character.toLowerCase(letter);
-        if(mMisses.indexOf(letter) >= 0 || mHits.indexOf(letter) >=0){
+        if (mMisses.indexOf(letter) >= 0 || mHits.indexOf(letter) >= 0) {
             throw new IllegalArgumentException(letter + " has already been guessed");
         }
         return letter;
     }
 
-    public boolean applyGuess(String letters){
-        if(letters.length() == 0){
-            throw new IllegalArgumentException("No letter found!");
+    public boolean applyGuess(String letters) {
+        if (letters.length() == 0) {
+            throw new IllegalArgumentException("No letter found");
         }
         return applyGuess(letters.charAt(0));
     }
 
-    public boolean applyGuess(char letter){
-        letter  = validateGuess(letter);
+    public boolean applyGuess(char letter) {
+        letter = validateGuess(letter);
         boolean isHit = mAnswer.indexOf(letter) >= 0;
-        if(isHit){
+        if (isHit) {
             mHits += letter;
-        }
-        else {
+        } else {
             mMisses += letter;
         }
         return isHit;
     }
 
-    public String getCurrentProgress(){
+    public String getCurrentProgress() {
         String progress = "";
-        for(char letter : mAnswer.toCharArray()){
+        for (char letter: mAnswer.toCharArray()) {
             char display = '-';
-            if(mHits.indexOf(letter) >= 0){
+            if (mHits.indexOf(letter) >= 0) {
                 display = letter;
             }
             progress += display;
@@ -59,13 +59,12 @@ public class Game {
     public int getRemainingTries() {
         return MAX_MISSES - mMisses.length();
     }
-
     public String getAnswer(){
         return mAnswer;
     }
 
     public boolean isSolved() {
-        // if it not there then its consider solved which is why we use -1
         return getCurrentProgress().indexOf('-') == -1;
     }
+
 }
