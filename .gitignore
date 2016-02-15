@@ -22,7 +22,7 @@ target/
 
 # IntelliJ IDEA files    #
 ##########################
-.idea/
+*.idea/
 *.ipr
 *.iml
 *.iws
